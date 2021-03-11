@@ -1,0 +1,430 @@
+package org.processmining.sapautomation.panels;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.swing.JOptionPane;
+import javax.swing.table.AbstractTableModel;
+ 
+public class MyTableModel extends AbstractTableModel {
+	private boolean DEBUG = true;
+    private static final long serialVersionUID = 1L;
+    
+    private int r = 0;
+    private int c = 0;
+    private Object[][] store;
+    private String[] names;
+    private String tableName;
+    public static final int MAXR = 100000;// due to memory, limited to 0.1 million, e.g., one hundred thousand
+    public static final int MAXC = 100;// one hundred 
+    
+    //parameter to control if the cells are editable
+    private Map<Integer, Map<Integer, Boolean>> rowVSColumnVSEditableFlag = new HashMap<Integer, Map<Integer, Boolean>> ();
+    private boolean tableEditableFlag = true;
+    
+    //with fixed numbers of rows and column
+    public MyTableModel() {
+        store = new Object[MAXR][MAXC];
+        names = new String[MAXC];
+    }
+ 
+    //with input numbers of rows and column, limited to the max value of int
+    public MyTableModel(int rowNumber, int columnNumber) {
+        store = new Object[rowNumber + 10][columnNumber + 10];
+        names = new String[columnNumber + 10];
+        System.out.println("rowNumber + 10: " + rowNumber + 10);
+        System.out.println("columnNumber + 10: " + columnNumber + 10);
+    }
+    
+    public int getColumnCount() {
+ 
+        return c;
+    }
+ 
+    public int getRowCount() {
+ 
+        return r;
+    }
+ 
+    public void setTableEditableFlag(boolean tableEditableFlag){
+    	this.tableEditableFlag = tableEditableFlag;
+    }
+    
+    public boolean getTableEditableFlag(){
+    	return tableEditableFlag;
+    }
+    
+    public Map<Integer, Map<Integer, Boolean>> getRowVSColumnVSEditableFlag(boolean editableFlag){
+    	return rowVSColumnVSEditableFlag;
+    }
+    
+    public boolean isCellEditable(int row, int col) {
+            if(tableEditableFlag){
+            	return true;
+            }
+            else if(rowVSColumnVSEditableFlag.containsKey(row) && rowVSColumnVSEditableFlag.get(row).containsKey(col)){
+            	boolean flag = rowVSColumnVSEditableFlag.get(row).get(col);
+            	return flag;
+            }
+            else{
+            	return false;
+            }
+    }
+    
+    public Object getValueAt(int arg0, int arg1) {
+    	if(store[arg0][arg1] == null){
+//    		System.out.println("\n store[arg0][arg1] == null");
+    		store[arg0][arg1] = "null";
+    	}
+//    	fireTableCellUpdated(arg0, arg1);
+        return store[arg0][arg1];
+    }
+ 
+    public void setValueAt(Object value, int row, int col) {
+    	if(value != null){
+            if (DEBUG) {
+                System.out.println("Setting value at " + row + "," + col
+                        + " to " + value + " (an instance of "
+                        + value.getClass() + ")");
+            }
+
+            if (store[0][col] instanceof Integer && !(value instanceof Integer)) {
+                try {
+                	store[row][col] = new Integer(value.toString());
+                    fireTableCellUpdated(row, col);
+                } catch (NumberFormatException e) {
+//                    JOptionPane.showMessageDialog(TableCheck.this, "The \""
+//                            + getColumnName(col)
+//                            + "\" column accepts only integer values.");
+                }
+            } else {
+            	store[row][col] = value;
+                fireTableCellUpdated(row, col);
+            }
+
+            if (DEBUG) {
+                System.out.println("New value of data:");
+                printDebugData();
+            }	
+    	}
+    }
+
+    private void printDebugData() {
+//        int numRows = getRowCount();
+//        int numCols = getColumnCount();
+//        int selectedRowCount = 0;
+//        for (int i = 0; i < numRows; i++) {
+//            System.out.print(" row " + i + ":");
+//            if((boolean) store[i][0]) selectedRowCount ++;
+//            for (int j = 0; j < numCols; j++) {
+//                System.out.print(" " + store[i][j]);
+//            }
+//            System.out.println();
+//        }
+////        selectedRowNumber.setName("row number: " + selectedRowCount);
+//        System.out.println("--------------------------");
+    }
+    
+    public String getColumnName(int columnIndex) {
+//        if(columnIndex < MAXC){
+//    		return names[columnIndex];
+//    	}
+//        else
+//        	return "";
+        
+        return names[columnIndex];
+    }
+    
+    public void setName(String s1, int pos) {
+//    	if(pos < MAXC){
+//    		names[pos] = s1;
+//    	}      
+//    	System.out.println("pos: " + pos);
+    	names[pos] = s1;
+    }
+ 
+    public void setC(int c) {
+        this.c = c;
+    }
+ 
+    public void setR(int r) {
+        this.r = r;
+    }
+ 
+    public void setRC(Object rs, int r1, int c1) {
+        store[r1][c1] = rs;
+    }
+    
+    //set the table content
+    public void setStore(Object[][] store) {
+        this.store = store;
+    }
+    
+    public Object[][] getStore() {
+        return store;
+    }
+    
+    //set the column names
+    public void setNames(String[] names) {
+    	this.c = names.length;
+        this.names = names;
+    }
+    
+   @Override
+    public Class getColumnClass(int c) {
+//    	System.out.println("\n table structure getColumnClass");
+    	return getValueAt(0, c).getClass();
+  	}
+
+   public void updateTable(){
+   		fireTableStructureChanged();
+   }
+   
+   public String getTableName(){
+   		return tableName;
+   }
+   
+   //remove the index column
+   public List<String> getFieldRow() {
+	   List<String> columNameList = new ArrayList<String>();	
+	   for(int i=1; i<c; i++){
+		   columNameList.add(names[i]);
+	   }
+	   return columNameList;
+   }
+   
+   //automatically add the index column
+   public void setFieldRow(List<String> nameList) {
+	   	if(nameList != null){
+	   		setName("index", 0);
+            for(int i=0; i<nameList.size(); i++){
+            	setName(nameList.get(i), i+1);
+            }
+            setC(nameList.size()+1);
+            fireTableStructureChanged();
+	   	}
+   }
+   
+   /**
+    * add a row at the position (last current index + 1);
+    * @param valueList
+    */
+   public void addRecordRow(List<Object> valueList) {
+		if(valueList != null){
+			int currentRowCount = getRowCount();
+			setRC(currentRowCount+1, currentRowCount, 0);
+	        for(int i=0; i<valueList.size(); i++){
+	        	setRC(valueList.get(i), currentRowCount, i+1);
+	        }
+	        setR(currentRowCount+1);
+	        fireTableStructureChanged();
+		}
+   }
+
+   /**
+    * add a row at the position of input index (index start as 0);
+    * by default, add an index value for the add row
+    * @param index
+    * @param valueList
+    */
+   public void addRecordRow(int index, List<Object> valueList) {
+		if(valueList != null){
+			int currentRowCount = getRowCount();
+			//record the rows after the index
+			List<List<Object>> rowContentsList = new ArrayList<List<Object>>();
+			for(int i=index; i<currentRowCount; i++){
+				List<Object> rowContents = getRecordRow(i);
+				rowContentsList.add(rowContents);						
+			}
+			
+			setR(index);
+			addRecordRow(valueList);
+			
+			for(List<Object> rowContents : rowContentsList){
+				addRecordRow(rowContents);
+			}			
+		}
+   }
+   
+   public void removeRecordRow(int rowIndex) {		
+		List<List<Object>> rowContentsList = new ArrayList<List<Object>>();
+		for(int i=0; i<getRowCount(); i++){
+			if(rowIndex != i){
+				List<Object> rowContents = getRecordRow(i);
+				rowContentsList.add(rowContents);
+			}
+					
+		}
+		clearAllTableRows();
+		for(List<Object> rowContents : rowContentsList){
+			addRecordRow(rowContents);
+		}
+	}
+	
+	public void removeRecordRowSet(int[] rowIndexSet) {	
+		Arrays.sort(rowIndexSet);		
+		for(int i=rowIndexSet.length-1; i>=0; i--){
+			removeRecordRow(rowIndexSet[i]);
+			System.out.println("selected index： " + rowIndexSet[i]);
+			updateTable();
+		}
+	}
+	
+	//get contents of a row except the first column (index)
+	public List<Object> getRecordRow(int row){
+		List<Object> valueList = new ArrayList<Object>();
+		int columnCount = getColumnCount();
+		for(int i=1; i<columnCount; i++){
+			valueList.add(getValueAt(row, i));
+		}		
+		return valueList;
+	}	
+	
+    /**
+     * get the index of column by name without taking into consideration the first column ("index")
+     * input: column name
+     * output: index of existent column (>0) or -1 (the column is inexistent)
+     */
+    public int getColumnIndexByName(String columnName) {
+    	int index = -1;
+    	List<String> columnNameList = getFieldRow();
+    	for(int i=0; i<columnNameList.size(); i++){
+    		if(columnNameList.get(i).equals(columnName)){
+    			index = i;
+    			break;
+    		}
+    	}
+    	if(index == -1){
+    		System.out.println("input column: " + columnName);
+    		for(String column : columnNameList){
+    			System.out.println("existent column: " + column);
+    		}
+    		JOptionPane.showMessageDialog(null, "Wrong! the column " + columnName + " does not exist in the table");
+    	}
+    	return index;
+    }
+    
+    /**
+     * select record list where the constraint column = value (e.g., get * with fk_commande=5)
+     * input: constraint column name (constraintColumn, nullable: no)
+     * and constraint value (constraintValue, nullable: no)
+     * output: target column value list (size == 0, if there is no values satisfying the constraint or targetColumn == null) 
+     */
+	public List<List<Object>> getRecordListWithColumnConstraint(String constraintColumn, String constraintValue){
+		List<List<Object>> recordList = new ArrayList<List<Object>>();
+		if(constraintColumn != null && constraintValue != null){
+			System.out.println("constraintColumn: " + constraintColumn);
+			int constraintColumnIndex = getColumnIndexByName(constraintColumn);
+			System.out.println("constraintColumnIndex: " + constraintColumnIndex);
+			for(int i=0; i<r; i++){
+				List<Object> recordValueList = getRecordRow(i);
+				String constraintColumnValue = (String) recordValueList.get(constraintColumnIndex);
+				if(constraintValue.equals(constraintColumnValue)){
+					recordList.add(recordValueList);
+				}
+			}
+		}
+		else{
+			JOptionPane.showMessageDialog(null, "Wrong! The input parameters constraint column or"
+					+ " value should not be null; return a empty list of list (List<List<Object>>)");
+		}			
+		return recordList;
+	}	
+	
+    /**
+     * select values of target column where the constraint column = value (e.g., get fk_commade with rowid=5)
+     * input: target column name (targetColumn, nullable: no), constraint column name (constraintColumn, nullable: yes)
+     * and constraint value (constraintValue, nullable: yes)
+     * output: target column value list (size == 0, if there is no values satisfying the constraint or targetColumn == null) 
+     * if the constraintColumn is the primary key column(s), the size == 1;
+     * if the constraintColumn or constraintValue is null, size == the number of values in a column (i.e., rows)
+	 * @param (combined) targetColumn 
+	 * @param (combined) constraintColumn
+	 * @param (combined) constraintValue
+	 * @return
+	 */
+	public List<Object> getColumnValuesWithColumnConstraint(String targetColumn, String constraintColumn, String constraintValue){
+		List<Object> valueList = new ArrayList<Object>();
+		if(targetColumn != null){			
+//			System.out.println("constraintColumn: " + constraintColumn);
+//			System.out.println("targetColumn: " + targetColumn);
+//			System.out.println("constraintValue: " + constraintValue);
+//			System.out.println("row number r: " + r);
+//			System.out.println("row number r: " + getRowCount());
+			if(constraintColumn != null && constraintValue != null){
+				for(int i=0; i<r; i++){
+//					System.out.println("row i: " + i);
+					String columnValueComplex = getColumnValueComplexBasedOnColumnNameComplex(constraintColumn, i);
+//					System.out.println("rcolumnValueComplex: " + columnValueComplex);
+					if(constraintValue.equals(columnValueComplex)){
+//						System.out.println("getColumnValueComplexBasedOnColumnNameComplex(targetColumn, i): " + getColumnValueComplexBasedOnColumnNameComplex(targetColumn, i));
+						valueList.add(getColumnValueComplexBasedOnColumnNameComplex(targetColumn, i));
+					}
+				}
+			}
+			else{//there are no constraints
+				for(int i=0; i<r; i++){
+//					List<Object> recordValueList = getRecordRow(i);
+					valueList.add(getColumnValueComplexBasedOnColumnNameComplex(targetColumn, i));
+				}
+			}
+		}
+		else{
+			JOptionPane.showMessageDialog(null, "Wrong! The target column should not be null; return a empty list");
+		}			
+		return valueList;
+	}	
+	
+	/**
+	 * get the getColumnValueComplex Based On ColumnNameComplex and a row index (including 0)
+	 * @param columnNameComplex
+	 * @param rowIndex
+	 * @return
+	 */
+	public String getColumnValueComplexBasedOnColumnNameComplex(String columnNameComplex, int rowIndex){
+		String columnValueComplex = "";
+		String[] columnNameArray = columnNameComplex.split("-");
+		List<Object> recordValueList = getRecordRow(rowIndex);
+		for(int i=0; i<columnNameArray.length; i++){
+//			System.out.println("i: " + i);
+//			System.out.println("columnNameArray[i]: " + columnNameArray[i]);
+			String columnName = columnNameArray[i];
+			int targetColumnIndex = getColumnIndexByName(columnName);
+			Object columnValue = recordValueList.get(targetColumnIndex);
+			columnValueComplex = columnValueComplex + columnValue.toString();
+			if(i != columnNameArray.length -1){
+//				columnValueComplex = columnValueComplex + "-";
+			}
+		}
+		return columnValueComplex;	
+	}
+	
+	
+	public void clearAllTableRows(){
+		setR(0);
+	}
+ 
+	public void copyToModel(MyTableModel inputModel){
+//		inputModel.clearAllTableRows();
+//		inputModel.setC(0);
+//		inputModel.setR(0);
+		
+		
+		inputModel.setFieldRow(getFieldRow());
+		for(int i=0; i<getRowCount(); i++){
+			inputModel.addRecordRow(getRecordRow(i));
+			System.out.println("record size" + getRecordRow(i).size());
+		}
+		System.out.println(getColumnCount());
+//		inputModel.setStore(store);
+		inputModel.setC(c);
+		inputModel.setR(r);
+		
+//		for(inputModel.names){
+//			
+//		}
+	}
+}

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9b23ee14-55a9-478c-a577-df7be68dc1c9" name="Default Changelist" comment="initial commit">
+      <change afterPath="$PROJECT_DIR$/.idea" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib_cobertura.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib_cobertura_2_0_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib_cobertura_2_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/libs_external.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sapjco3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev_jco_rfc.trc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dot" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/dot/dot.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dot/freetype6.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dot/ft.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dot/jpeg.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dot/libexpat.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dot/libexpatw.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dot/png.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dot/ttf.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dot/z.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dot/zlib1.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/libsapjco3.jnilib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/sapjco3-3.0.14-darwinintel64.jnilib.md5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/sapjco3-3.0.14-darwinintel64.jnilib.sha1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/sapjco3-3.0.14-linuxx86_64.so.md5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/sapjco3-3.0.14-linuxx86_64.so.sha1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/sapjco3-3.0.14-ntamd64.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/sapjco3-3.0.14-ntamd64.dll.md5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/sapjco3-3.0.14-ntamd64.dll.sha1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/sapjco3-3.0.14.jar.md5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/sapjco3-3.0.14.jar.sha1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/sapjco3-3.0.14.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/sapjco3-3.0.14.pom.md5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/sapjco3-3.0.14.pom.sha1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/sapjco3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/logs/SapAutomation.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/out/production" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/log4j2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/Test" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/Test/Scenario_FrequentOrderChange.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/Test/Scenario_LowConversion.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/Test/TestLogger.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/Test/TestMain.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/configuration" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/configuration/ConfigurationParameters.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/configuration/ReadConfigurations.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/configuration/WriteConfigurations.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/constants" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/constants/GlobalConstants.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/dialogue" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/dialogue/IOFileDialogue.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/models" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/models/SapAutomation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/panels" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/panels/MyComboBoxEditor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/panels/MyComboBoxRenderer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/panels/MyListPanel$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/panels/MyListPanel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/panels/MyTableModel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/panels/MyTablePanel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/parser" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/parser/ParseAutomationLog.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/parser/Preprocessor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/plugins" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/plugins/ControlPlugin.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/plugins/SapAutomationPlugin.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/sap" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/sap/PropertiesDestinationDataProvider.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/sap/SapConnector.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/sap/SapTransRepo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/sap/Transaction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/ui" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/ui/AutomationLogView$AutomationLogPanel$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/ui/AutomationLogView$AutomationLogPanel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/ui/AutomationLogView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/ui/ConfigurationView$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/ui/ConfigurationView$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/ui/ConfigurationView$ParamMappingPanel$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/ui/ConfigurationView$ParamMappingPanel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/ui/ConfigurationView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/ui/HomeView$InputPanel$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/ui/HomeView$InputPanel$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/ui/HomeView$InputPanel$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/ui/HomeView$InputPanel$4.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/ui/HomeView$InputPanel$5.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/ui/HomeView$InputPanel$6.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/ui/HomeView$InputPanel$7.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/ui/HomeView$InputPanel$8.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/ui/HomeView$InputPanel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/ui/HomeView$ResultPanel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/ui/HomeView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/ui/RelativeLayout.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/ui/SapAutomationView$LeftPanel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/ui/SapAutomationView$RightPanel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ERPSimulator/org/processmining/sapautomation/ui/SapAutomationView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/test" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/out/test/tests" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/log4j2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/Test" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/Test/Scenario_FrequentOrderChange.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/Test/Scenario_LowConversion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/Test/TestLogger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/Test/TestMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/configuration" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/configuration/ConfigurationParameters.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/configuration/ReadConfigurations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/configuration/WriteConfigurations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/constants" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/constants/GlobalConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/dialogue" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/dialogue/IOFileDialogue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/models" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/models/SapAutomation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/panels" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/panels/MyComboBoxEditor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/panels/MyComboBoxRenderer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/panels/MyListPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/panels/MyTableModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/panels/MyTablePanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/parser" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/parser/ParseAutomationLog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/parser/Preprocessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/plugins" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/plugins/ControlPlugin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/plugins/SapAutomationPlugin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/sap" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/sap/PropertiesDestinationDataProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/sap/SapConnector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/sap/SapTransRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/sap/Transaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/ui" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/ui/AutomationLogView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/ui/ConfigurationView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/ui/HomeView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/ui/RelativeLayout.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/processmining/sapautomation/ui/SapAutomationView.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1pZkhvR0IAek0r6gfXltG6vYUEJ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib" />
+      <recent name="$PROJECT_DIR$/src/org/processmining/sapautomation/sap" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.ProM with UITopia (ERPSimulator)">
+    <configuration name="ProM Package Manager (ERPSimulator)" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.processmining.contexts.uitopia.packagemanager.PMFrame" />
+      <module name="ERPSimulator" />
+      <option name="VM_PARAMETERS" value="-ea -Xmx1G -Djava.library.path=." />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProM with UITopia (ERPSimulator)" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.processmining.contexts.uitopia.UI" />
+      <module name="ERPSimulator" />
+      <option name="VM_PARAMETERS" value="-ea -Xmx4G -XX:MaxPermSize=256m -Djava.library.path=. -Djava.util.Arrays.useLegacyMergeSort=true" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>$USER_HOME$/.subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="SvnFileUrlMappingImpl">
+    <option name="myMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="$PROJECT_DIR$" />
+          <option name="myCopyRoot" value="$PROJECT_DIR$" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="$PROJECT_DIR$" />
+          <option name="myCopyRoot" value="$PROJECT_DIR$/.settings" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+    <option name="myMoreRealMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="$PROJECT_DIR$" />
+          <option name="myCopyRoot" value="$PROJECT_DIR$" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="$PROJECT_DIR$" />
+          <option name="myCopyRoot" value="$PROJECT_DIR$/.settings" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9b23ee14-55a9-478c-a577-df7be68dc1c9" name="Default Changelist" comment="" />
+      <created>1615398127621</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1615398127621</updated>
+    </task>
+    <task id="LOCAL-00001" summary="initial commit">
+      <created>1615447492142</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1615447492142</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
+    <MESSAGE value="initial commit2" />
+    <MESSAGE value="initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+</project>

@@ -1,0 +1,332 @@
+
+**** Error file opened at 20200816 180709 Central European Summer Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Sun Aug 16 18:07:09,635<    >RfcGetException rc (7) message: Required field in interface to delivery update missing VBELN_VL 000000  000000
+<RfcGetException
+
+
+**** Error file opened at 20200816 180806 Central European Summer Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Sun Aug 16 18:08:06,884<    >RfcGetException rc (7) message: Picked quantity is larger than the quantity to be delivered
+<RfcGetException
+
+
+**** Error file opened at 20200816 180904 Central European Summer Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Sun Aug 16 18:09:04,455<    >RfcGetException rc (7) message: Picked quantity is larger than the quantity to be delivered
+<RfcGetException
+
+
+**** Error file opened at 20200816 180938 Central European Summer Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Sun Aug 16 18:09:38,503<    >RfcGetException rc (7) message: Picked quantity is larger than the quantity to be delivered
+<RfcGetException
+
+
+**** Error file opened at 20200816 181139 Central European Summer Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Sun Aug 16 18:11:39,783<    >RfcGetException rc (7) message: Picked quantity is larger than the quantity to be delivered
+<RfcGetException
+
+
+**** Error file opened at 20200816 193648 Central European Summer Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Sun Aug 16 19:36:48,672<    >RfcGetException rc (7) message: Picked quantity is larger than the quantity to be delivered
+<RfcGetException
+
+
+**** Error file opened at 20200816 193727 Central European Summer Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Sun Aug 16 19:37:27,528<    >RfcGetException rc (7) message: Picked quantity is larger than the quantity to be delivered
+<RfcGetException
+
+
+**** Error file opened at 20200816 193944 Central European Summer Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Sun Aug 16 19:39:44,228<    >RfcGetException rc (7) message: Picked quantity is larger than the quantity to be delivered
+<RfcGetException
+
+
+**** Error file opened at 20200816 194116 Central European Summer Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Sun Aug 16 19:41:16,471<    >RfcGetException rc (7) message: Picked quantity is larger than the quantity to be delivered
+<RfcGetException
+
+
+**** Error file opened at 20200816 194502 Central European Summer Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Sun Aug 16 19:45:02,241<    >RfcGetException rc (7) message: Picked quantity is larger than the quantity to be delivered
+<RfcGetException
+
+
+**** Error file opened at 20200817 104339 Central European Summer Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error: [2] >Mon Aug 17 10:43:39,665<    RfcException raised by system [ZID|srvides2020]:
+    message: CPIC-CALL: SAP_CMKEEPALIVE on convId: 52878470
+no SAP ErrInfo available
+    return code: RFC_CLOSED (6)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
+
+**** Error file opened at 20200907 131902 Central European Summer Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Mon Sep 07 13:19:02,304<    >RfcGetException rc (7) message: The current application has triggered a termination with a short dump.
+<RfcGetException
+
+
+**** Error file opened at 20200922 124815 Central European Summer Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Tue Sep 22 12:48:15,017<    >RfcGetException rc (7) message: Delivery 87000106 does not exist
+<RfcGetException
+
+Error:  >Tue Sep 22 12:49:09,342<    >RfcGetException rc (7) message: Delivery 87000107 does not exist
+<RfcGetException
+
+Error:  >Tue Sep 22 12:50:16,020<    >RfcGetException rc (7) message: Delivery 87000111 does not exist
+<RfcGetException
+
+Error:  >Tue Sep 22 12:50:19,895<    >RfcGetException rc (7) message: Delivery 87000113 does not exist
+<RfcGetException
+
+Error:  >Tue Sep 22 12:51:53,607<    >RfcGetException rc (7) message: Delivery 87000115 does not exist
+<RfcGetException
+
+Error:  >Tue Sep 22 12:52:56,152<    >RfcGetException rc (7) message: Delivery 87000118 does not exist
+<RfcGetException
+
+Error:  >Tue Sep 22 12:54:55,103<    >RfcGetException rc (7) message: Delivery 87000123 does not exist
+<RfcGetException
+
+Error:  >Tue Sep 22 12:55:16,172<    >RfcGetException rc (7) message: Delivery 87000124 does not exist
+<RfcGetException
+
+Error:  >Tue Sep 22 12:55:43,803<    >RfcGetException rc (7) message: Delivery 87000125 does not exist
+<RfcGetException
+
+Error:  >Tue Sep 22 12:56:02,122<    >RfcGetException rc (7) message: Delivery 87000126 does not exist
+<RfcGetException
+
+Error:  >Tue Sep 22 12:56:23,549<    >RfcGetException rc (7) message: Delivery 87000131 does not exist
+<RfcGetException
+
+Error:  >Tue Sep 22 12:56:27,762<    >RfcGetException rc (7) message: Delivery 87000129 does not exist
+<RfcGetException
+
+Error:  >Tue Sep 22 12:58:17,263<    >RfcGetException rc (7) message: Delivery 87000134 does not exist
+<RfcGetException
+
+Error:  >Tue Sep 22 13:01:13,006<    >RfcGetException rc (7) message: Delivery 87000143 does not exist
+<RfcGetException
+
+Error:  >Tue Sep 22 13:01:35,676<    >RfcGetException rc (7) message: Delivery 87000146 does not exist
+<RfcGetException
+
+Error:  >Tue Sep 22 13:01:39,559<    >RfcGetException rc (7) message: Delivery 87000144 does not exist
+<RfcGetException
+
+Error:  >Tue Sep 22 13:03:21,199<    >RfcGetException rc (7) message: Delivery 87000150 does not exist
+<RfcGetException
+
+
+**** Error file opened at 20201028 135756 Central European Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Wed Oct 28 13:57:56,700<    >RfcGetException rc (7) message: Error in ABAP statement while processing an internal table.
+<RfcGetException
+
+
+**** Error file opened at 20201028 135858 Central European Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Wed Oct 28 13:58:58,842<    >RfcGetException rc (7) message: Error in ABAP statement while processing an internal table.
+<RfcGetException
+
+
+**** Error file opened at 20201028 140440 Central European Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Wed Oct 28 14:04:40,133<    >RfcGetException rc (7) message: Error in ABAP statement while processing an internal table.
+<RfcGetException
+
+
+**** Error file opened at 20201030 121751 Central European Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Fri Oct 30 12:17:51,757<    >RfcGetException rc (7) message: The current application has triggered a termination with a short dump.
+<RfcGetException
+
+
+**** Error file opened at 20201031 130531 Central European Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Sat Oct 31 13:05:31,801<    >RfcGetException rc (7) message: Delivery 87000293 does not exist
+<RfcGetException
+
+
+**** Error file opened at 20201031 143411 Central European Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Sat Oct 31 14:34:11,702<    >RfcGetException rc (7) message: Exception condition "ITEM_NUMBER_MISSING" triggered
+<RfcGetException
+
+
+**** Error file opened at 20201031 143910 Central European Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Sat Oct 31 14:39:10,504<    >RfcGetException rc (7) message: Error in ABAP statement while processing an internal table.
+<RfcGetException
+
+
+**** Error file opened at 20201031 144000 Central European Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Sat Oct 31 14:40:00,271<    >RfcGetException rc (7) message: Error in ABAP statement while processing an internal table.
+<RfcGetException
+
+
+**** Error file opened at 20201031 144024 Central European Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Sat Oct 31 14:40:24,741<    >RfcGetException rc (7) message: Error in ABAP statement while processing an internal table.
+<RfcGetException
+
+
+**** Error file opened at 20201113 183820 Central European Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Fri Nov 13 18:38:20,558<    >RfcGetException rc (7) message: Item 000020 does not exist
+<RfcGetException
+
+
+**** Error file opened at 20201222 194525 Central European Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Tue Dec 22 19:45:25,890<    >RfcGetException rc (7) message: Delivery 87000410 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 19:46:13,568<    >RfcGetException rc (7) message: Delivery 87000405 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 19:48:40,628<    >RfcGetException rc (7) message: Delivery 87000388 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 19:49:17,565<    >RfcGetException rc (7) message: Delivery 87000357 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 19:49:34,625<    >RfcGetException rc (7) message: Delivery 87000440 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 19:50:28,150<    >RfcGetException rc (7) message: Delivery 87000378 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 19:51:48,500<    >RfcGetException rc (7) message: Delivery 87000445 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 19:53:09,310<    >RfcGetException rc (7) message: Delivery 87000415 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 19:53:49,049<    >RfcGetException rc (7) message: Delivery 87000381 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 19:54:30,426<    >RfcGetException rc (7) message: Delivery 87000439 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 19:56:07,464<    >RfcGetException rc (7) message: Delivery 87000418 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 19:56:47,785<    >RfcGetException rc (7) message: Delivery 87000407 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 19:57:04,625<    >RfcGetException rc (7) message: Delivery 87000370 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 19:57:25,484<    >RfcGetException rc (7) message: Delivery 87000431 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 19:57:58,023<    >RfcGetException rc (7) message: Delivery 87000367 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 19:58:10,266<    >RfcGetException rc (7) message: Delivery 87000444 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 19:58:23,393<    >RfcGetException rc (7) message: Delivery 87000353 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 19:58:31,292<    >RfcGetException rc (7) message: Delivery 87000412 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 19:58:40,640<    >RfcGetException rc (7) message: Delivery 87000446 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 19:58:53,164<    >RfcGetException rc (7) message: Delivery 87000402 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 19:59:04,764<    >RfcGetException rc (7) message: Delivery 87000355 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 20:00:13,251<    >RfcGetException rc (7) message: Delivery 87000362 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 20:02:59,431<    >RfcGetException rc (7) message: Delivery 87000398 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 20:03:40,465<    >RfcGetException rc (7) message: Delivery 87000429 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 20:04:05,612<    >RfcGetException rc (7) message: Delivery 87000411 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 20:04:09,351<    >RfcGetException rc (7) message: Delivery 87000417 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 20:04:55,287<    >RfcGetException rc (7) message: Delivery 87000420 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 20:05:03,878<    >RfcGetException rc (7) message: Delivery 87000404 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 20:05:08,800<    >RfcGetException rc (7) message: Delivery 87000426 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 20:05:16,313<    >RfcGetException rc (7) message: Delivery 87000421 does not exist
+<RfcGetException
+
+Error:  >Tue Dec 22 20:05:20,492<    >RfcGetException rc (7) message: Delivery 87000384 does not exist
+<RfcGetException
+
+
+**** Error file opened at 20210109 145123 Central European Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error:  >Sat Jan 09 14:51:23,983<    >RfcGetException rc (3) message: CPIC-CALL: CMRCV on convId: 04199407
+
+LOCATION    CPIC (TCP/IP) on local host
+ERROR       connection to partner '185.208.175.208:3300' broken
+TIME        Sat Jan  9 14:51:23 2021
+RELEASE     721
+COMPONENT   NI (network interface)
+VERSION     40
+RC          -6
+MODULE      nixxi.cpp
+LINE        4599
+DETAIL      NiIWrite: P=185.208.175.208:3300; L=137.226.117.183:51540
+SYSTEM CALL writev
+ERRNO       32
+ERRNO TEXT  Broken pipe
+COUNTER     4
+
+<RfcGetException
+
+Error: [1] >Sat Jan 09 14:51:23,985<    RfcException raised by system [ZID|srvides2020]:
+    message: CPIC-CALL: CMRCV on convId: 04199407
+
+LOCATION    CPIC (TCP/IP) on local host
+ERROR       connection to partner '185.208.175.208:3300' broken
+TIME        Sat Jan  9 14:51:23 2021
+RELEASE     721
+COMPONENT   NI (network interface)
+VERSION     40
+RC          -6
+MODULE      nixxi.cpp
+LINE        4599
+DETAIL      NiIWrite: P=185.208.175.208:3300; L=137.226.117.183:51540
+SYSTEM CALL writev
+ERRNO       32
+ERRNO TEXT  Broken pipe
+COUNTER     4
+
+    return code: RFC_SYS_EXCEPTION (3)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
+
+**** Error file opened at 20210109 155315 Central European Time Rel. 3.0.14 (2015-12-16) [721.619]
+Error: [2] >Sat Jan 09 15:53:15,981<    RfcException raised by system [ZID|srvides2020]:
+    message: CPIC-CALL: SAP_CMKEEPALIVE on convId: 08054516
+no SAP ErrInfo available
+    return code: RFC_CLOSED (6)
+    error group: 102
+    key: RFC_ERROR_COMMUNICATION
+Error:  >Sat Jan 09 16:23:14,083<    >RfcGetException rc (7) message: Delivery 87000469 does not exist
+<RfcGetException
+
+Error:  >Sat Jan 09 16:32:39,602<    >RfcGetException rc (7) message: Delivery 87000466 does not exist
+<RfcGetException
+
+Error:  >Sat Jan 09 16:38:32,382<    >RfcGetException rc (7) message: Delivery 87000472 does not exist
+<RfcGetException
+
+Error:  >Sat Jan 09 16:42:23,795<    >RfcGetException rc (7) message: Delivery 87000470 does not exist
+<RfcGetException
+
+Error:  >Sat Jan 09 16:53:35,924<    >RfcGetException rc (7) message: Delivery 87000475 does not exist
+<RfcGetException
+
+Error:  >Sat Jan 09 17:04:40,623<    >RfcGetException rc (7) message: Delivery 87000480 does not exist
+<RfcGetException
+
+Error:  >Sat Jan 09 17:07:58,562<    >RfcGetException rc (7) message: Delivery 87000477 does not exist
+<RfcGetException
+

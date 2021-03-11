@@ -1,0 +1,610 @@
+package org.processmining.sapautomation.sap;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import com.sap.conn.jco.JCoDestination;
+import com.sap.conn.jco.JCoException;
+import com.sap.conn.jco.JCoFunction;
+import com.sap.conn.jco.JCoFunctionTemplate;
+import com.sap.conn.jco.JCoRepository;
+import com.sap.conn.jco.JCoStructure;
+import com.sap.conn.jco.JCoTable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class SapTransRepo {
+	private static boolean action=false;
+	private static final Logger logger = LoggerFactory.getLogger(SapTransRepo.class.getName());
+
+	public static void throwExceptionOnError(JCoFunction function) {
+		try {
+			JCoTable tabProfiles = function.getTableParameterList().getTable("RETURN");
+			char resultType;
+			String message;
+			for (int i = 0; i < tabProfiles.getNumRows(); i++, tabProfiles.nextRow()) {
+			  resultType = tabProfiles.getChar("TYPE");
+			  if (resultType == 'E' || resultType == 'A') {
+//					  throw new RuntimeException(tabProfiles.getString("MESSAGE"));
+				  message= "ERROR: " + tabProfiles.getString("MESSAGE");
+//				  System.out.println("ERROR: " + tabProfiles.getString("MESSAGE"));
+				  logger.info(message);
+			  }else if (resultType == 'W') {
+				  message= "Warning: " + tabProfiles.getString("MESSAGE");
+//				  System.out.println("Warning: " + tabProfiles.getString("MESSAGE"));
+				  logger.info(message);
+			  }
+			}
+		} catch(Exception e) {
+		}
+		
+		
+		
+	  }
+
+	public static void createInquiry(JCoDestination dest,Map<String,String> paramMap) throws JCoException {
+		JCoRepository sapRepository = dest.getRepository();
+		JCoFunctionTemplate template = sapRepository.getFunctionTemplate("BAPI_INQUIRY_CREATEFROMDATA2");
+		JCoFunction function = template.getFunction();
+
+		// SALES_HEADER_IN
+		JCoStructure inquiryHeader = function.getImportParameterList().getStructure("INQUIRY_HEADER_IN");
+		inquiryHeader.setValue("DOC_TYPE",paramMap.get("DOC_TYPE"));
+		inquiryHeader.setValue("SALES_ORG", paramMap.get("SALES_ORG"));
+		inquiryHeader.setValue("DISTR_CHAN", paramMap.get("DISTR_CHAN"));
+		inquiryHeader.setValue("DIVISION", paramMap.get("DIVISION"));
+
+		function.getImportParameterList().setValue("INQUIRY_HEADER_IN", inquiryHeader);
+		function.getImportParameterList().setValue("SALESDOCUMENTIN", paramMap.get("INQUIRY_NUMBER"));
+
+		//SALES_PARTNERS
+		JCoTable inquiryPartners = function.getTableParameterList().getTable("INQUIRY_PARTNERS");
+		inquiryPartners.appendRow();
+		inquiryPartners.setValue("PARTN_ROLE", "AG");
+		inquiryPartners.setValue("PARTN_NUMB", paramMap.get("PARTN_NUMB"));
+		inquiryPartners.appendRow();
+		inquiryPartners.setValue("PARTN_ROLE", "WE");
+		inquiryPartners.setValue("PARTN_NUMB", paramMap.get("PARTN_NUMB"));
+		function.getTableParameterList().setValue("INQUIRY_PARTNERS", inquiryPartners);
+
+		function.execute(dest);
+		String message=String.format("Create Inquiry with %s (BAPI_INQUIRY_CREATEFROMDATA2)",paramMap.toString());
+		logger.info(message);
+		throwExceptionOnError(function);
+	}
+
+	public static void createQuotation(JCoDestination dest,Map<String,String> paramMap) throws JCoException {
+		JCoRepository sapRepository = dest.getRepository();
+		JCoFunctionTemplate template = sapRepository.getFunctionTemplate("BAPI_QUOTATION_CREATEFROMDATA2");
+		JCoFunction function = template.getFunction();
+
+		// SALES_HEADER_IN
+		JCoStructure quotationHeader = function.getImportParameterList().getStructure("QUOTATION_HEADER_IN");
+		quotationHeader.setValue("DOC_TYPE",paramMap.get("DOC_TYPE"));
+		quotationHeader.setValue("SALES_ORG", paramMap.get("SALES_ORG"));
+		quotationHeader.setValue("DISTR_CHAN", paramMap.get("DISTR_CHAN"));
+		quotationHeader.setValue("DIVISION", paramMap.get("DIVISION"));
+		function.getImportParameterList().setValue("QUOTATION_HEADER_IN", quotationHeader);
+
+		function.getImportParameterList().setValue("SALESDOCUMENTIN", paramMap.get("QUOTATION_NUMBER"));
+		//SALES_PARTNERS
+		JCoTable quotationPartners = function.getTableParameterList().getTable("QUOTATION_PARTNERS");
+		quotationPartners.appendRow();
+		quotationPartners.setValue("PARTN_ROLE", "AG");
+		quotationPartners.setValue("PARTN_NUMB", paramMap.get("PARTN_NUMB"));
+		quotationPartners.appendRow();
+		quotationPartners.setValue("PARTN_ROLE", "WE");
+		quotationPartners.setValue("PARTN_NUMB", paramMap.get("PARTN_NUMB"));
+		function.getTableParameterList().setValue("QUOTATION_PARTNERS", quotationPartners);
+
+		function.execute(dest);
+		String message=String.format("Create quotation with %s (BAPI_QUOTATION_CREATEFROMDATA2)",paramMap.toString());
+		logger.info(message);
+		throwExceptionOnError(function);
+	}
+
+	public static void createQuotationWithRef(JCoDestination dest,Map<String,String> paramMap) throws JCoException {
+		JCoRepository sapRepository = dest.getRepository();
+		JCoFunctionTemplate template = sapRepository.getFunctionTemplate("BAPI_QUOTATION_CREATEFROMDATA2");
+		JCoFunction function = template.getFunction();
+
+		// SALES_HEADER_IN
+		JCoStructure quotationHeader = function.getImportParameterList().getStructure("QUOTATION_HEADER_IN");
+		quotationHeader.setValue("DOC_TYPE",paramMap.get("DOC_TYPE"));
+		quotationHeader.setValue("SALES_ORG", paramMap.get("SALES_ORG"));
+		quotationHeader.setValue("DISTR_CHAN", paramMap.get("DISTR_CHAN"));
+		quotationHeader.setValue("DIVISION", paramMap.get("DIVISION"));
+		quotationHeader.setValue("REF_DOC", paramMap.get("REF_INQUIRY_NUMBER"));
+		quotationHeader.setValue("REFDOC_CAT", "A");
+
+		function.getImportParameterList().setValue("QUOTATION_HEADER_IN", quotationHeader);
+		function.getImportParameterList().setValue("SALESDOCUMENTIN", paramMap.get("QUOTATION_NUMBER"));
+
+		//SALES_PARTNERS
+		JCoTable quotationPartners = function.getTableParameterList().getTable("QUOTATION_PARTNERS");
+		quotationPartners.appendRow();
+		quotationPartners.setValue("PARTN_ROLE", "AG");
+		quotationPartners.setValue("PARTN_NUMB", paramMap.get("PARTN_NUMB"));
+		quotationPartners.appendRow();
+		quotationPartners.setValue("PARTN_ROLE", "WE");
+		quotationPartners.setValue("PARTN_NUMB", paramMap.get("PARTN_NUMB"));
+		function.getTableParameterList().setValue("QUOTATION_PARTNERS", quotationPartners);
+
+		function.execute(dest);
+		String message=String.format("Create Quotation with Reference to Inquiry with %s (BAPI_QUOTATION_CREATEFROMDATA2)",paramMap.toString());
+		logger.info(message);
+		throwExceptionOnError(function);
+	}
+	
+	public static void createOrderWithRef(JCoDestination dest,Map<String,String> paramMap) throws JCoException {
+		JCoRepository sapRepository = dest.getRepository();
+		JCoFunctionTemplate template = sapRepository.getFunctionTemplate("BAPI_SALESORDER_CREATEFROMDAT2");
+		JCoFunction function = template.getFunction();
+		
+		// SALES_HEADER_IN
+		JCoStructure orderHeader = function.getImportParameterList().getStructure("ORDER_HEADER_IN");
+		orderHeader.setValue("DOC_TYPE",paramMap.get("DOC_TYPE"));
+		orderHeader.setValue("SALES_ORG", paramMap.get("SALES_ORG"));
+		orderHeader.setValue("DISTR_CHAN", paramMap.get("DISTR_CHAN"));
+		orderHeader.setValue("DIVISION", paramMap.get("DIVISION"));
+		orderHeader.setValue("REF_DOC", paramMap.get("REF_QUOTATION_NUMBER"));
+		orderHeader.setValue("REFDOC_CAT", "B");
+
+		function.getImportParameterList().setValue("ORDER_HEADER_IN", orderHeader);
+		function.getImportParameterList().setValue("SALESDOCUMENTIN", paramMap.get("ORDER_NUMBER"));
+
+		//SALES_PARTNERS
+		JCoTable orderPartners = function.getTableParameterList().getTable("ORDER_PARTNERS");
+		orderPartners.appendRow();
+		orderPartners.setValue("PARTN_ROLE", "AG");
+		orderPartners.setValue("PARTN_NUMB", paramMap.get("PARTN_NUMB"));
+		orderPartners.appendRow();
+		orderPartners.setValue("PARTN_ROLE", "WE");
+		orderPartners.setValue("PARTN_NUMB", paramMap.get("PARTN_NUMB"));
+		function.getTableParameterList().setValue("ORDER_PARTNERS", orderPartners);
+		
+		function.execute(dest);
+		String message=String.format("Create Order with Reference to Quotation with %s (BAPI_SALESORDER_CREATEFROMDAT2)",paramMap.toString());
+		logger.info(message);
+		throwExceptionOnError(function);
+	}
+
+	public static void createOrder(JCoDestination dest,Map<String,String> paramMap) throws JCoException {
+		JCoRepository sapRepository = dest.getRepository();
+		JCoFunctionTemplate template = sapRepository.getFunctionTemplate("BAPI_SALESORDER_CREATEFROMDAT2");
+		JCoFunction function = template.getFunction();
+
+		// SALES_HEADER_IN
+		JCoStructure orderHeader = function.getImportParameterList().getStructure("ORDER_HEADER_IN");
+		orderHeader.setValue("DOC_TYPE",paramMap.get("DOC_TYPE"));
+		orderHeader.setValue("SALES_ORG", paramMap.get("SALES_ORG"));
+		orderHeader.setValue("DISTR_CHAN", paramMap.get("DISTR_CHAN"));
+		orderHeader.setValue("DIVISION", paramMap.get("DIVISION"));
+
+		function.getImportParameterList().setValue("ORDER_HEADER_IN", orderHeader);
+		function.getImportParameterList().setValue("SALESDOCUMENTIN", paramMap.get("ORDER_NUMBER"));
+
+		//SALES_PARTNERS
+		JCoTable orderPartners = function.getTableParameterList().getTable("ORDER_PARTNERS");
+		orderPartners.appendRow();
+		orderPartners.setValue("PARTN_ROLE", "AG");
+		orderPartners.setValue("PARTN_NUMB", paramMap.get("PARTN_NUMB"));
+		orderPartners.appendRow();
+		orderPartners.setValue("PARTN_ROLE", "WE");
+		orderPartners.setValue("PARTN_NUMB", paramMap.get("PARTN_NUMB"));
+		function.getTableParameterList().setValue("ORDER_PARTNERS", orderPartners);
+
+		function.execute(dest);
+		String message=String.format("Create Order with %s (BAPI_SALESORDER_CREATEFROMDAT2)",paramMap.toString());
+		logger.info(message);
+		throwExceptionOnError(function);
+	}
+	
+	public static void confirmOrder(JCoDestination dest,Map<String,String> paramMap) throws JCoException {
+		JCoRepository sapRepository = dest.getRepository();
+		JCoFunctionTemplate template = sapRepository.getFunctionTemplate("BAPI_SALESORDER_CHANGE");
+		JCoFunction function = template.getFunction();
+		
+		if(action==true) {
+			sendErrorMessage(dest,paramMap);
+		}
+		
+		// SALES_HEADER_IN is a structure
+		JCoStructure orderHeaderInx = function.getImportParameterList().getStructure("ORDER_HEADER_INX");
+		orderHeaderInx.setValue("UPDATEFLAG", "U");
+		function.getImportParameterList().setValue("ORDER_HEADER_INX", orderHeaderInx);
+		function.getImportParameterList().setValue("SALESDOCUMENT", paramMap.get("ORDER_NUMBER"));
+		
+		// ORDERITEMIN
+		JCoTable orderItemIn = function.getTableParameterList().getTable("ORDER_ITEM_IN");
+		JCoTable scheduleLines = function.getTableParameterList().getTable("SCHEDULE_LINES");
+		String [] itemNumArray = paramMap.get("ITM_NUMBER_LIST").split(",");
+		String [] materialArray = paramMap.get("MATERIAL_LIST").split(",");
+		String [] quantityArray = paramMap.get("TARGET_QTY_LIST").split(",");
+		String [] scheduleLineArray = paramMap.get("SCHED_LINE_LIST").split(",");
+		int itemSize = itemNumArray.length;
+		for(int i=0;i<itemSize;i++) {
+			orderItemIn.appendRow();
+			orderItemIn.setValue("ITM_NUMBER", itemNumArray[i]);
+			orderItemIn.setValue("MATERIAL", materialArray[i]);
+			orderItemIn.setValue("TARGET_QTY",quantityArray[i]);
+			
+			scheduleLines.appendRow();
+			scheduleLines.setValue("ITM_NUMBER",itemNumArray[i]);
+			scheduleLines.setValue("SCHED_LINE", scheduleLineArray[i]);
+			scheduleLines.setValue("REQ_QTY", quantityArray[i]);
+		}
+
+		function.getTableParameterList().setValue("ORDER_ITEM_IN", orderItemIn);
+		function.getTableParameterList().setValue("SCHEDULE_LINES", scheduleLines);
+		
+		function.execute(dest);
+		String message=String.format("Confirm Order with %s (BAPI_SALESORDER_CHANGE)",paramMap.toString());
+		logger.info(message);
+		throwExceptionOnError(function);
+	}
+	
+	public static void cancelOrder(JCoDestination dest,Map<String,String> paramMap) throws JCoException {
+		JCoRepository sapRepository = dest.getRepository();
+		JCoFunctionTemplate template = sapRepository.getFunctionTemplate("BAPI_SALESORDER_CHANGE");
+		JCoFunction function = template.getFunction();
+		
+		if(action==true) {
+			sendErrorMessage(dest,paramMap);
+		}
+		
+		// SALES_HEADER_IN is a structure
+		JCoStructure orderHeaderInx = function.getImportParameterList().getStructure("ORDER_HEADER_INX");
+		orderHeaderInx.setValue("UPDATEFLAG", "D");
+		function.getImportParameterList().setValue("ORDER_HEADER_INX", orderHeaderInx);
+		function.getImportParameterList().setValue("SALESDOCUMENT", paramMap.get("ORDER_NUMBER"));
+		function.execute(dest);
+		String message=String.format("Cancel Order with %s (BAPI_SALESORDER_CHANGE)",paramMap.toString());
+		logger.info(message);
+		throwExceptionOnError(function);
+	}
+	
+	public static void createDelivery(JCoDestination dest, Map<String,String> paramMap) throws JCoException {
+		JCoRepository sapRepository = dest.getRepository();
+		JCoFunctionTemplate template = sapRepository.getFunctionTemplate("BAPI_OUTB_DELIVERY_CREATE_SLS");
+		JCoFunction function = template.getFunction();
+		
+		JCoTable salesOrderItems = function.getTableParameterList().getTable("SALES_ORDER_ITEMS");
+		salesOrderItems.appendRow();
+		salesOrderItems.setValue("REF_DOC", paramMap.get("REF_ORDER_NUMBER"));
+		salesOrderItems.setValue("DELIV_NUMB", paramMap.get("DELIVERY_NUMBER"));
+		function.getTableParameterList().setValue("SALES_ORDER_ITEMS", salesOrderItems);
+		
+		function.execute(dest);
+		String message=String.format("Create Delivery with %s (BAPI_OUTB_DELIVERY_CREATE_SLS)",paramMap.toString());
+		logger.info(message);
+		throwExceptionOnError(function);
+	}
+	
+	public static void createTransferOrderforDelivery(JCoDestination dest, Map<String,String> paramMap) throws JCoException {
+		JCoRepository sapRepository = dest.getRepository();
+		JCoFunctionTemplate template = sapRepository.getFunctionTemplate("L_TO_CREATE_DN");
+		JCoFunction function = template.getFunction();
+		
+		function.getImportParameterList().setValue("I_LGNUM", paramMap.get("WAREHOUSE_NUM"));
+		function.getImportParameterList().setValue("I_VBELN", paramMap.get("DELIVERY_NUMBER"));
+		
+		function.execute(dest);
+		String message=String.format("Create Transfer Order with %s (L_TO_CREATE_DN)",paramMap.toString());
+		logger.info(message);
+	}
+	
+	public static void createPGI(JCoDestination dest, Map<String,String> paramMap) throws JCoException {
+		JCoRepository sapRepository = dest.getRepository();
+		JCoFunctionTemplate template = sapRepository.getFunctionTemplate("WS_DELIVERY_UPDATE");
+		JCoFunction function = template.getFunction();
+		
+		function.getImportParameterList().setValue("DELIVERY", paramMap.get("DELIVERY_NUMBER"));
+		
+		JCoStructure vbkok = function.getImportParameterList().getStructure("VBKOK_WA");
+		vbkok.setValue("WABUC", "X");
+		vbkok.setValue("VBELN_VL", paramMap.get("DELIVERY_NUMBER"));
+		function.getImportParameterList().setValue("VBKOK_WA", vbkok);
+		
+		function.getImportParameterList().setValue("SYNCHRON", "X");
+		function.getImportParameterList().setValue("COMMIT", "X");
+		function.getImportParameterList().setValue("UPDATE_PICKING", "X");
+		function.getImportParameterList().setValue("NICHT_SPERREN", "X");
+		
+		function.execute(dest);
+		String message=String.format("Create Post Goods Issue %s (WS_DELIVERY_UPDATE)",paramMap.toString());
+		logger.info(message);
+		throwExceptionOnError(function);
+	}
+	
+	public static void createInvoice(JCoDestination dest, Map<String,String> paramMap) throws JCoException {
+		JCoRepository sapRepository = dest.getRepository();
+		JCoFunctionTemplate template = sapRepository.getFunctionTemplate("BAPI_BILLINGDOC_CREATEMULTIPLE");
+		JCoFunction function = template.getFunction();
+		
+		JCoTable billingData = function.getTableParameterList().getTable("BILLINGDATAIN");
+		billingData.appendRow();
+		billingData.setValue("REF_DOC", paramMap.get("REF_DELIVERY_NUMBER"));
+		billingData.setValue("REF_DOC_CA", "J");
+		function.getTableParameterList().setValue("BILLINGDATAIN", billingData);
+		function.execute(dest);
+		String message=String.format("Create Invoice %s (BAPI_BILLINGDOC_CREATEMULTIPLE)",paramMap.toString());
+		logger.info(message);
+		throwExceptionOnError(function);
+	}
+	
+	public static void commitTrans(JCoDestination dest) throws JCoException  {
+		JCoRepository sapRepository = dest.getRepository();
+		JCoFunctionTemplate template = sapRepository.getFunctionTemplate("BAPI_TRANSACTION_COMMIT");
+		JCoFunction commFunct = template.getFunction();
+		commFunct.getImportParameterList().setValue("WAIT", "10");
+		commFunct.execute(dest);
+		System.out.println("Function BAPI_TRANSACTION_COMMIT executed .");
+	}
+	
+	public static void changeOrder(JCoDestination dest,Map<String,String> paramMap, String changeType) throws JCoException {
+		JCoRepository sapRepository = dest.getRepository();
+		JCoFunctionTemplate template = sapRepository.getFunctionTemplate("BAPI_SALESORDER_CHANGE");
+		JCoFunction function = template.getFunction();
+		
+		if(action==true) {
+			sendErrorMessage(dest,paramMap);
+		}
+		
+		//Set header data
+		JCoStructure orderHeaderInx = function.getImportParameterList().getStructure("ORDER_HEADER_INX");
+		orderHeaderInx.setValue("UPDATEFLAG", "U");
+		function.getImportParameterList().setValue("ORDER_HEADER_INX", orderHeaderInx);
+		function.getImportParameterList().setValue("SALESDOCUMENT", paramMap.get("ORDER_NUMBER"));
+		
+		JCoTable orderItemIn = function.getTableParameterList().getTable("ORDER_ITEM_IN");
+		JCoTable orderItemInx = function.getTableParameterList().getTable("ORDER_ITEM_INX");
+		JCoTable conditionsIn = function.getTableParameterList().getTable("CONDITIONS_IN");
+		JCoTable conditionsInx = function.getTableParameterList().getTable("CONDITIONS_INX");
+		JCoTable scheduleLines = function.getTableParameterList().getTable("SCHEDULE_LINES");
+		JCoTable scheduleLinesX = function.getTableParameterList().getTable("SCHEDULE_LINESX");
+		
+		if(changeType.equals("price")) {
+			JCoStructure logicSwitch = function.getImportParameterList().getStructure("LOGIC_SWITCH");
+			logicSwitch.setValue("PRICING", "C");
+			function.getImportParameterList().setValue("LOGIC_SWITCH", logicSwitch);
+			
+			System.out.println(paramMap);
+			String [] itemNumArray = paramMap.get("ITM_NUMBER_LIST").split(",");
+			
+			int itemSize = itemNumArray.length;
+			for(int i=0;i<itemSize;i++) {
+				orderItemIn.appendRow();
+				orderItemIn.setValue("ITM_NUMBER", itemNumArray[i]);
+				
+				orderItemInx.appendRow();
+				orderItemInx.setValue("ITM_NUMBER", itemNumArray[i]);
+				orderItemInx.setValue("UPDATEFLAG","U");
+				
+				conditionsIn.appendRow();
+				conditionsIn.setValue("ITM_NUMBER",itemNumArray[i]);
+				conditionsIn.setValue("COND_VALUE", paramMap.get("COND_VAL"));
+				conditionsIn.setValue("COND_UPDAT", "X");
+				conditionsIn.setValue("COND_TYPE", paramMap.get("COND_TYPE"));
+				conditionsIn.setValue("CURRENCY", paramMap.get("CURRENCY"));
+
+				
+				conditionsInx.appendRow();
+				conditionsInx.setValue("UPDATEFLAG","U");
+				conditionsInx.setValue("ITM_NUMBER",itemNumArray[i]);
+				conditionsInx.setValue("COND_TYPE", "X");
+				conditionsInx.setValue("CURRENCY", "X");
+				conditionsInx.setValue("COND_VALUE", "X");
+			}
+			
+		}else if(changeType.equals("quantity")) {
+			String [] itemNumArray = paramMap.get("ITM_NUMBER_LIST").split(",");
+			int itemSize = itemNumArray.length;
+			for(int i=0;i<itemSize;i++) {
+				orderItemIn.appendRow();
+				orderItemIn.setValue("ITM_NUMBER", itemNumArray[i]);
+				orderItemIn.setValue("TARGET_QTY",paramMap.get("INCREASE_QTY"));
+				
+				orderItemInx.appendRow();
+				orderItemInx.setValue("ITM_NUMBER", itemNumArray[i]);
+				orderItemInx.setValue("UPDATEFLAG","U");
+				orderItemInx.setValue("TARGET_QTY","X");
+				
+				scheduleLines.appendRow();
+				scheduleLines.setValue("ITM_NUMBER",itemNumArray[i]);
+				scheduleLines.setValue("SCHED_LINE","0001");
+				scheduleLines.setValue("REQ_QTY", paramMap.get("INCREASE_QTY"));
+
+				scheduleLinesX.appendRow();
+				scheduleLinesX.setValue("UPDATEFLAG","U");
+				scheduleLinesX.setValue("ITM_NUMBER",itemNumArray[i]);
+				scheduleLinesX.setValue("SCHED_LINE","0001");
+				scheduleLinesX.setValue("REQ_QTY", "X");
+			}
+		}else if(changeType.equals("delete")) {
+			String [] itemNumArray = paramMap.get("ITM_NUMBER_LIST").split(",");
+			int itemSize = itemNumArray.length;
+			for(int i=0;i<itemSize;i++) {
+				orderItemIn.appendRow();
+				orderItemIn.setValue("ITM_NUMBER", itemNumArray[i]);
+				
+				orderItemInx.appendRow();
+				orderItemInx.setValue("ITM_NUMBER", itemNumArray[i]);
+				orderItemInx.setValue("UPDATEFLAG","D");
+				
+				scheduleLines.appendRow();
+				scheduleLines.setValue("ITM_NUMBER",itemNumArray[i]);
+				
+
+				scheduleLinesX.appendRow();
+				scheduleLinesX.setValue("UPDATEFLAG","U");
+				scheduleLinesX.setValue("ITM_NUMBER",itemNumArray[i]);
+			}
+		}else if(changeType.equals("material")) {
+			String [] itemNumArray = paramMap.get("ITM_NUMBER_LIST").split(",");
+			int itemSize = itemNumArray.length;
+			for(int i=0;i<itemSize;i++) {
+				orderItemIn.appendRow();
+				orderItemIn.setValue("ITM_NUMBER", itemNumArray[i]);
+				orderItemIn.setValue("MATERIAL",paramMap.get("MATERIAL"));
+				orderItemIn.setValue("TARGET_QTY",paramMap.get("TARGET_QTY"));
+				
+				orderItemInx.appendRow();
+				orderItemInx.setValue("ITM_NUMBER", itemNumArray[i]);
+				orderItemInx.setValue("UPDATEFLAG","U");
+				orderItemInx.setValue("MATERIAL","X");
+				orderItemInx.setValue("TARGET_QTY","X");
+				
+//				scheduleLines.appendRow();
+//				scheduleLines.setValue("ITM_NUMBER",itemNumArray[i]);
+//				scheduleLines.setValue("SCHED_LINE","0001");
+//				scheduleLines.setValue("REQ_QTY", paramMap.get("TARGET_QTY"));
+////				scheduleLines.setValue("REQ_DATE", "20201103");
+//				
+//
+//				scheduleLinesX.appendRow();
+//				scheduleLinesX.setValue("UPDATEFLAG","U");
+//				scheduleLinesX.setValue("ITM_NUMBER",itemNumArray[i]);
+//				scheduleLinesX.setValue("REQ_QTY", "X");
+////				scheduleLinesX.setValue("REQ_DATE", "X");
+			}
+		}else if(changeType.equals("create_delivery_date")) {
+			JCoStructure logicSwitch = function.getImportParameterList().getStructure("LOGIC_SWITCH");
+			logicSwitch.setValue("SCHEDULING", "X");
+			function.getImportParameterList().setValue("LOGIC_SWITCH", logicSwitch);
+			
+			String [] itemNumArray = paramMap.get("ITM_NUMBER_LIST").split(",");
+			int itemSize = itemNumArray.length;
+			for(int i=0;i<itemSize;i++) {
+				orderItemIn.appendRow();
+				orderItemIn.setValue("ITM_NUMBER", itemNumArray[i]);
+				
+				orderItemInx.appendRow();
+				orderItemInx.setValue("ITM_NUMBER", itemNumArray[i]);
+				orderItemInx.setValue("UPDATEFLAG","U");
+				
+				scheduleLines.appendRow();
+				scheduleLines.setValue("ITM_NUMBER",itemNumArray[i]);
+				scheduleLines.setValue("SCHED_LINE",paramMap.get("SCHED_LINE"));
+				scheduleLines.setValue("REQ_DATE", paramMap.get("REQ_DATE"));
+				
+
+				scheduleLinesX.appendRow();
+				scheduleLinesX.setValue("UPDATEFLAG","U");
+				scheduleLinesX.setValue("ITM_NUMBER",itemNumArray[i]);
+				scheduleLinesX.setValue("SCHED_LINE",paramMap.get("SCHED_LINE"));
+				scheduleLinesX.setValue("REQ_DATE", "X");
+			}
+		}
+			
+		function.getTableParameterList().setValue("ORDER_ITEM_IN", orderItemIn);
+		function.getTableParameterList().setValue("ORDER_ITEM_INX", orderItemInx);
+		function.getTableParameterList().setValue("SCHEDULE_LINES", scheduleLines);
+		function.getTableParameterList().setValue("SCHEDULE_LINESX", scheduleLinesX);
+		function.getTableParameterList().setValue("CONDITIONS_IN", conditionsIn);
+		function.getTableParameterList().setValue("CONDITIONS_INX", conditionsInx);
+		
+		function.execute(dest);
+		String message=String.format("Change Order %s (BAPI_SALESORDER_CHANGE)",paramMap.toString());
+		logger.info(message);
+		throwExceptionOnError(function);
+	}
+	
+	
+	public static void changeDelivery(JCoDestination dest, Map<String,String> paramMap, String changeType) throws JCoException {
+		JCoRepository sapRepository = dest.getRepository();
+		JCoFunctionTemplate template = sapRepository.getFunctionTemplate("WS_DELIVERY_UPDATE");
+		JCoFunction function = template.getFunction();
+		
+		function.getImportParameterList().setValue("DELIVERY", paramMap.get("DELIVERY_NUMBER"));
+		
+		if(changeType.equals("delivery_quantity")) {
+			JCoTable vbpocTab = function.getTableParameterList().getTable("VBPOK_TAB");
+			String [] itemNumArray = paramMap.get("ITM_NUMBER_LIST").split(",");
+			String [] quantityArray = paramMap.get("TARGET_QTY_LIST").split(",");
+			int itemSize = itemNumArray.length;
+			for(int i=0;i<itemSize;i++) {
+				vbpocTab.appendRow();
+				vbpocTab.setValue("VBELN_VL",paramMap.get("DELIVERY_NUMBER"));
+				vbpocTab.setValue("POSNR_VL", itemNumArray[i]);
+				vbpocTab.setValue("LIANP", "X");
+				vbpocTab.setValue("LFIMG", quantityArray[i]);
+			}
+			
+			function.getTableParameterList().setValue("VBPOK_TAB", vbpocTab);
+		}else if(changeType.equals("net_weight")) {
+			JCoTable vbpocTab = function.getTableParameterList().getTable("VBPOK_TAB");
+			String [] itemNumArray = paramMap.get("ITM_NUMBER_LIST").split(",");
+			String [] netWeightArray = paramMap.get("NET_WEIGHT_LIST").split(",");
+			int itemSize = itemNumArray.length;
+			for(int i=0;i<itemSize;i++) {
+				vbpocTab.appendRow();
+				vbpocTab.setValue("VBELN_VL",paramMap.get("DELIVERY_NUMBER"));
+				vbpocTab.setValue("POSNR_VL", itemNumArray[i]);
+				vbpocTab.setValue("KZNTG", "X");
+				vbpocTab.setValue("NTGEW", netWeightArray[i]);
+			}
+			
+			function.getTableParameterList().setValue("VBPOK_TAB", vbpocTab);
+		}
+		
+		
+		
+		function.execute(dest);
+		String message=String.format("Change Delivery %s (WS_DELIVERY_UPDATE)",paramMap.toString());
+		logger.info(message);
+		//not defined
+		throwExceptionOnError(function);
+	}
+	
+	public static void createShipment(JCoDestination dest, Map<String,String> paramMap) throws JCoException {
+		JCoRepository sapRepository = dest.getRepository();
+		JCoFunctionTemplate template = sapRepository.getFunctionTemplate("BAPI_SHIPMENT_CREATE");
+		JCoFunction function = template.getFunction();
+		
+		JCoStructure headerData = function.getImportParameterList().getStructure("HEADERDATA");
+//		headerData.setValue("SHIPMENT_NUM",paramMap.get("SHIPMENT_NUM"));
+//		headerData.setValue("GUID", paramMap.get("GUID"));
+		headerData.setValue("SHIPMENT_TYPE", paramMap.get("SHIPMENT_TYPE"));
+		headerData.setValue("TRANS_PLAN_PT", paramMap.get("TRANS_PLAN_PT"));
+		headerData.setValue("SHIPMENT_ROUTE", paramMap.get("SHIPMENT_ROUTE"));
+//		headerData.setValue("CONTAINER_ID", paramMap.get("CONTAINER_ID"));
+//		headerData.setValue("EXTERNAL_ID_1", paramMap.get("EXTERNAL_ID_1"));
+		function.getImportParameterList().setValue("HEADERDATA", headerData);
+		
+		
+		JCoTable itemData = function.getTableParameterList().getTable("ITEMDATA");
+		itemData.appendRow();
+		itemData.setValue("DELIVERY",paramMap.get("DELIVERY_NUMBER"));
+		itemData.setValue("ITENERARY",paramMap.get("ITENERARY"));
+		function.getTableParameterList().setValue("ITEMDATA", itemData);
+		
+		
+		
+		function.execute(dest);
+		String message=String.format("Create Shipment %s (BAPI_SHIPMENT_CREATE)",paramMap.toString());
+		logger.info(message);
+		//not defined
+		throwExceptionOnError(function);
+	}
+	
+	
+	
+	public static void sendErrorMessage(JCoDestination dest, Map<String,String> paramMap) throws JCoException {
+		JCoRepository sapRepository = dest.getRepository();
+		JCoFunctionTemplate template = sapRepository.getFunctionTemplate("TH_POPUP");
+		JCoFunction function = template.getFunction();
+		
+		function.getImportParameterList().setValue("CLIENT", "800");
+
+		function.getImportParameterList().setValue("USER", "M4JID1");
+		
+		function.getImportParameterList().setValue("MESSAGE", "Warning: order - " + paramMap.get("ORDER_NUMBER") +  " is changed. Determine if it is valid.");
+		
+		
+		function.execute(dest);
+	}
+	
+	public static void main(String[] arg) throws Exception{
+	}
+}

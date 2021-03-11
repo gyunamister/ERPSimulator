@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info">
+<Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+        <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level - %msg%n"/>
+    </Console>
+    <File name="fout" fileName="/Users/gyunam/Documents/SAP/SapAutomation/logs/SapAutomation.log" append="true">
+        <PatternLayout>
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %m%nw</Pattern>
+        </PatternLayout>
+    </File>
+</Appenders>
+<Loggers>
+    <Root level="info">
+        <AppenderRef ref="Console"/>
+        <AppenderRef ref="fout"/>
+    </Root>
+</Loggers>
+</Configuration>

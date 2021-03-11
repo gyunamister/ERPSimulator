@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="IvyIDEA.ProjectSettings">
+    <option name="artifactTypeSettings">
+      <ArtifactTypeSettings>
+        <option name="classesTypes" value="jar, mar, sar, war, ear, ejb, bundle, test-jar" />
+        <option name="javadocTypes" value="javadoc, doc, docs, apidoc, apidocs, documentation, documents" />
+        <option name="sourcesTypes" value="source, src, sources, srcs" />
+      </ArtifactTypeSettings>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="SvnBranchConfigurationManager">
+    <option name="myConfigurationMap">
+      <map>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://svn.win.tue.nl/repos/prom/Packages/ERPSimulator/Branches" />
+                  <option value="https://svn.win.tue.nl/repos/prom/Packages/ERPSimulator/Tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://svn.win.tue.nl/repos/prom/Packages/ERPSimulator/Trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

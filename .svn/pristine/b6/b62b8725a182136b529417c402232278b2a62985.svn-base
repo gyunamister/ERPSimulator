@@ -1,0 +1,72 @@
+package org.processmining.sapautomation.ui;
+
+import org.processmining.framework.plugin.PluginContext;
+import org.processmining.sapautomation.models.SapAutomation;
+
+import javax.swing.*;
+
+public class SapAutomationView extends JPanel {
+    private final SapAutomation sapAutomation;
+    private final RightPanel rightPanel;
+    private final LeftPanel leftPanel;
+    PluginContext context;
+
+    public SapAutomationView(PluginContext context, SapAutomation sapAutomation) {
+        this.context = context;
+        this.sapAutomation = sapAutomation;
+        RelativeLayout rl = new RelativeLayout(RelativeLayout.X_AXIS);
+        rl.setFill(true);
+        setLayout(rl);
+
+        leftPanel = new LeftPanel(context, this, sapAutomation);
+        rightPanel = new RightPanel(context, this, sapAutomation);
+
+        add(leftPanel, new Float(50));
+        add(rightPanel, new Float(50));
+    }
+
+    public LeftPanel getLeftPanel() {
+        return this.leftPanel;
+    }
+
+    public RightPanel getRightPanel() {
+        return this.rightPanel;
+    }
+
+    class RightPanel extends JPanel {
+        private final ConfigurationView configurationView;
+        PluginContext context;
+
+        public RightPanel(PluginContext context, SapAutomationView parent, SapAutomation sapAutomation) {
+            this.context = context;
+            RelativeLayout rl = new RelativeLayout(RelativeLayout.Y_AXIS);
+            rl.setFill(true);
+            setLayout(rl);
+            configurationView = new ConfigurationView(context, parent, sapAutomation);
+            add(configurationView, new Float(100));
+        }
+
+        public ConfigurationView getConfigurationView() {
+            return this.configurationView;
+        }
+    }
+
+    class LeftPanel extends JPanel {
+        private final AutomationLogView autoLogView;
+        PluginContext context;
+
+        public LeftPanel(PluginContext context, SapAutomationView parent, SapAutomation sapAutomation) {
+            this.context = context;
+            RelativeLayout rl = new RelativeLayout(RelativeLayout.Y_AXIS);
+            rl.setFill(true);
+            setLayout(rl);
+            autoLogView = new AutomationLogView(context, parent, sapAutomation);
+            add(autoLogView, new Float(100));
+        }
+
+        public AutomationLogView getAutomationLogView() {
+            return this.autoLogView;
+        }
+    }
+
+}

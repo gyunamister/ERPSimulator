@@ -1,0 +1,6 @@
+package org.processmining.erpsimulator.models;
+
+
+public class YourFirstInput {
+
+}
